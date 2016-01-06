@@ -1,17 +1,14 @@
-"""Bubble sort algorithm"""
+def sort_numbers(new_list):
+    """sort the list using insertion sort"""
 
-
-def bubble(user_list):
-    """sorts the list"""
-
-    s = False
-    while not s:
-        s = True
-        for i in range(len(user_list) - 1):
-            if user_list[i] > user_list[i+1]:
-                s = False
-                user_list[i], user_list[i+1] = user_list[i+1], user_list[i]
-    return user_list
+    for num in range(1, len(new_list)):
+        hold = new_list[num]
+        n = num - 1
+        while n >= 0 and new_list[n] > hold:
+            new_list[n + 1] = new_list[n]
+            n -= 1
+        new_list[n + 1] = hold
+    return new_list
 
 
 def get_user_list():
@@ -35,7 +32,8 @@ def get_user_list():
 
     return user_list
 
+
 if __name__ == '__main__':
-    unsorted = get_user_list()
-    print(unsorted)
-    print(bubble(unsorted))
+    new_list = get_user_list()
+    print(new_list)
+    print(sort_numbers(new_list))
